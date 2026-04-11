@@ -1,0 +1,37 @@
+<div class="card-painel">
+  
+  <h2 class="titulo-secao">Gestão de Estoque</h2>
+  <p class="subtitulo">Cadastre e gerencie os produtos do armazém.</p>
+
+  <div class="formulario-linha">
+    <input type="text" placeholder="Código (ex: P002)" [(ngModel)]="novoCodigo" class="input-korp">
+    
+    <input type="text" placeholder="Descrição do Produto" [(ngModel)]="novaDescricao" class="input-korp input-largo">
+    
+    <input type="number" placeholder="Saldo" [(ngModel)]="novoSaldo" class="input-korp input-curto">
+    
+    <button (click)="salvar()" class="btn-korp">
+      Salvar Produto
+    </button>
+  </div>
+
+  <hr class="linha-divisoria">
+
+  <table class="tabela-korp">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descrição</th>
+        <th>Saldo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of listaProdutos">
+        <td style="font-weight: 600;">{{ p.codigo }}</td>
+        <td>{{ p.descricao }}</td>
+        <td>{{ p.saldo }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
