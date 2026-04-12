@@ -1,9 +1,12 @@
-<div style="background-color: #2E3D4D; padding: 15px 40px; display: flex; align-items: center; border-bottom: 4px solid #F01446;">
-  <h1 style="color: white; margin:0; font-family: 'Segoe UI', sans-serif; font-size: 24px; font-weight: 800;">
-    KORP <span style="font-weight: 300;">ERP</span>
-  </h1>"
+<div class="navbar-korp">
+  <img src="logo-korp.png" alt="Logo Korp ERP" class="logo-imagem">
+
+  <nav class="menu-navegacao">
+    <a routerLink = "/estoque" routerLinkActive = "menu-ativo" class = "btn-meunu">Estoque</a>
+    <a routerLink = "/faturamento" routerLinkActive = "menu-ativo" class = "btn-meunu">Faturamento</a>
+  </nav>
 </div>
 
-<div style="background-color: #F4F5F7; min-height: 100vh; padding: 40px; font-family: 'Segoe UI', sans-serif;">
-  <app-estoque></app-estoque>
+<div class="container-principal">
+  <router-outlet></router-outlet>
 </div>

@@ -1,1 +1,49 @@
-<p>faturamento works!</p>
+<div class="card-painel">
+  <h2 class="titulo-secao">Emissão de Nota Fiscal</h2>
+  <p class="subtitulo">Adicione os produtos ao carrinho e emita a nota para processar a baixa no estoque.</p>
+  <div class="formulario-linha">
+    <input type="text" placeholder="Código do Produto (ex: P001)" 
+    [(ngModel)]="itemAtualCodigo" class="input-korp input-largo">
+    
+    <input type="number" placeholder="Quantidade" [(ngModel)]="itemAtualQuantidade" class="input-korp input-curto" min="1">
+    
+    <button (click)="adicionarItem()" class="btn-secundario">
+      Adicionar Item
+    </button>
+  </div>
+
+  <hr class="linha-divisoria">  
+  <h3 class="titulo-tabela">Itens da Nota</h3>
+  <table class="tabela-korp">
+    <thead>
+      <tr>
+        <th>Código do Produto</th>
+        <th>Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of itensNoCarrinho">
+        <td style="font-weight: 600;">{{ item.produto_codigo }}</td>
+        <td>{{ item.quantidade }}</td>
+      </tr>
+      
+      <tr *ngIf="itensNoCarrinho.length === 0">
+        <td colspan="2" style="text-align: center; color: #7A8B9E;">Nenhum item adicionado à nota.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="acoes-nota">
+    <button (click)="salvarEImprimirNota()" class="btn-korp" [disabled]="itensNoCarrinho.length === 0">
+      Salvar e Imprimir Nota
+    </button>
+  </div>
+</div>
+
+<div 
+  class="toast-notificacao" 
+  *ngIf="mensagemFeedback" 
+  [ngClass]="tipoFeedBack === 'sucesso' ? 'toast-sucesso' : 'toast-erro'">
+  
+  {{ mensagemFeedback }}
+
+</div>

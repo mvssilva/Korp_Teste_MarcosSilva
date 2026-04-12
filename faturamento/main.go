@@ -140,13 +140,24 @@ func imprimirNota(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"mensagem": "Nota impressa e fechado com sucesso, o saldo foi descontado."})
 }
 
+func controleAcesso(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+	if c.Request.Method == "OPTIONS" {
+		c.AbortWithStatus(204)
+		return
+	}
+	c.Next()
+}
+
 func main() {
 	conectarBanco()
 	criarTabelaNotas()
 
 	router := gin.Default()
+	router.Use(controleAcesso)
 	router.POST("/notas", criarNota)
-
 	router.POST("/notas/:id/imprimir", imprimirNota)
 	router.Run(":8081")
 }
