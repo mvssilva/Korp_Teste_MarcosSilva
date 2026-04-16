@@ -2,7 +2,7 @@
 Este projeto foi desenvolvido como parte do desafio técnico para a vaga de Desenvolvedor na Korp/Viasoft. O sistema consiste em uma aplicação web fullstack para o cadastro de produtos e gestão de notas fiscais, operando sob uma arquitetura de microsserviços.
 
 ## Apresentação
-- Vídeo Demonstrativo: [Link para o vídeo (Google Drive/OneDrive)] 
+- Vídeo Demonstrativo: [[Link para o vídeo (Google Drive)] ](https://drive.google.com/file/d/1PyCXHyD3WrtSA1CVaJsRJQgncP_8qc5z/view?usp=drive_link)
     - O vídeo contém a demonstração das telas, funcionalidades e o detalhamento técnico da solução.
 
 ## Arquitetura do Sistema
