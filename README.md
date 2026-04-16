@@ -23,6 +23,10 @@ Este projeto foi desenvolvido como parte do desafio técnico para a vaga de Dese
   - Framework: Gin Gonic para roteamento HTTP e gerenciamento de Middleware (CORS).
   - Gerenciamento de Dependências: Go Modules (go.mod).
   - Tratamento de Erros: Implementado através de validações de entrada e respostas com códigos de status HTTP apropriados (400, 404, 500) para feedback ao usuário.
+- Inteligência Artificial
+    - Google Gemini API: Integrada ao microsserviço de faturamento para suporte ao usuário.
+    - Generative AI SDK: Utilizado para processamento de linguagem natural e respostas contextualizadas.
+    - Dotenv (godotenv): Gerenciamento seguro de chaves de API e variáveis de ambiente.
 
 ## Funcionalidades Implementadas
 - Conforme o escopo do projeto:
@@ -34,23 +38,32 @@ Este projeto foi desenvolvido como parte do desafio técnico para a vaga de Dese
      - Botão intuitivo de impressão com indicador de processamento.
      - Atualização automática do status da nota para "Fechada" após a emissão.
      - Atualização de Saldo: O sistema realiza o cálculo e abate o saldo dos produtos no estoque conforme a quantidade utilizada na nota.
-    
+  4. KorpAssist (IA):
+        - Chatbot integrado para sanar dúvidas sobre o fluxo de estoque e faturamento.
+        - Engenharia de Prompt: Blindagem contra vazamento de dados técnicos (Data Leakage) e foco em regras de negócio.
+        - 
 ## Como Executar o Projeto
 Pré-requisitos
 - Go 1.20+
 - Node.js & Angular CLI
 - MySQL Server
+- Gemini API Key (Google AI Studio)
 
 Passo a Passo
   1. Banco de Dados: Execute os scripts SQL localizados em /database/init.sql.
-  2. Microsserviço de Estoque:
+  2. Configuração de Variáveis de Ambiente:
+    - No diretório do serviço de faturamento, crie um arquivo `.env`.
+    - Adicione a linha: `GEMINI_API_KEY=sua_chave_aqui`.
+  3. Microsserviço de Estoque:
   ```bash
     cd backend-estoque
+    go mod tidy
     go run main.go
   ```
   3. Microsserviço de Faturamento:
   ```bash
     cd backend-faturamento
+    go mod tidy
     go run main.go
   ```
   4. Frontend:
@@ -65,6 +78,7 @@ Passo a Passo
 Implementado feedback visual (Toast Notifications) para alertar o usuário caso um dos microsserviços esteja offline ou ocorra um erro de processamento, garantindo a recuperação e transparência do sistema.
 
 ## Fotos do estágio atual:
-<img width="795" height="781" alt="image" src="https://github.com/user-attachments/assets/ec8ec716-9d9a-416a-9aaa-b25f548b3255" />
+<img width="973" height="768" alt="image" src="https://github.com/user-attachments/assets/4db24deb-1b7b-417c-b53b-3328bcaf334f" />
+<img width="973" height="768" alt="image" src="https://github.com/user-attachments/assets/61f18d06-bfac-4f04-8c1b-939993731622" />
 
 Desenvolvido por Marcos Silva, Obrigado!
