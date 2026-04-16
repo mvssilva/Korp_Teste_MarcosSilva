@@ -92,3 +92,42 @@
 .tabela-korp tbody tr:hover {
   background-color: #F8F9FA;
 }
+
+/* --- TOAST DE NOTIFICAÇÃO --- */
+.toast-notificacao {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  padding: 20px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  z-index: 9999; 
+  min-width: 250px;
+  text-align: center;
+  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.toast-sucesso {
+  background-color: #059669; 
+  border-bottom: 4px solid #047857;
+}
+
+.toast-erro {
+  background-color: #dc2626;
+  border-bottom: 4px solid #b91c1c;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

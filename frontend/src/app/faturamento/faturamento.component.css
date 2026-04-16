@@ -160,3 +160,50 @@
     opacity: 1;
   }
 }
+
+/* Cabeçalho de Status e Número da Nota */
+.cabecalho-nota-fiscal {
+    display: flex;
+    gap: 40px;
+    background-color: #F8F9FA; /* Mesma cor do header da sua tabela */
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 6px solid #2E3D4D; /* Destaque no azul escuro que você já usa */
+    margin-bottom: 20px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.info-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.label-pequeno {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #7A8B9E; /* Mesmo tom do seu subtitulo */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.valor-destaque {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2E3D4D;
+}
+
+.status-aberta {
+    color: #F01446; /* Vermelho Korp para indicar que ainda não foi finalizada */
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.status-fechada {
+    color: #059669; /* Verde sucesso que você usou no Toast */
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}

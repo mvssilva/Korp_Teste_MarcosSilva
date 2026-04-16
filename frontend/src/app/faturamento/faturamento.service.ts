@@ -26,4 +26,9 @@ export class FaturamentoService {
   imprimirNota(idNota: string | number): Observable<any> {
     return this.http.post(`${this.apiUrlFaturamento}/${idNota}/imprimir`, {});
   }
+
+  // Adicione junto com os seus outros métodos HTTP
+  buscarProximoId() {
+    return this.http.get<any>('http://localhost:8081/notas/proximo-id');
+  }
 }

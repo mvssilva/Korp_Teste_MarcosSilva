@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/joho/godotenv" //
+	"github.com/joho/godotenv"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
@@ -264,6 +264,21 @@ func chatComGemini(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"resposta": textoResposta})
 }
 
+// Busca o próximo ID disponível para a Nota Fiscal
+func buscarProximoID(c *gin.Context) {
+	var proximoID int
+
+	// Pega o maior ID atual e soma 1. Se a tabela estiver vazia (COALESCE), retorna 1.
+	err := db.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM notas_fiscais").Scan(&proximoID)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"erro": "Não foi possível calcular o próximo ID."})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"proximo_id": proximoID})
+}
+
 func main() {
 
 	err := godotenv.Load()
@@ -281,6 +296,7 @@ func main() {
 	router.Use(controleAcesso)
 	router.POST("/notas", criarNota)
 	router.POST("/notas/:id/imprimir", imprimirNota)
+	router.GET("/notas/proximo-id", buscarProximoID)
 	router.POST("/chat", chatComGemini)
 
 	// Inicializa o servidor HTTP na porta 8081

@@ -17,6 +17,10 @@ export class EstoqueComponent implements OnInit{
 
   listaProdutos: any[] = [];
 
+  // --- Controle do Toast de Notificação ---
+  mensagemFeedback: string = '';
+  tipoFeedBack: 'sucesso' | 'erro' = 'sucesso';
+
   constructor(private estoqueService: EstoqueService){}
 
   ngOnInit() {
@@ -30,16 +34,48 @@ export class EstoqueComponent implements OnInit{
   }
 
   salvar() {
+    const codigoLimpo = this.novoCodigo.trim();
+    const descricaoLimpa = this.novaDescricao.trim();
+
+    if (!codigoLimpo || !descricaoLimpa) {
+      this.mostrarMensagem('erro', 'Código e Descrição são obrigatórios!');
+      return;
+    }
+
+    if (this.novoSaldo < 0) {
+      this.mostrarMensagem('erro', 'O saldo não pode ser negativo.');
+      return;
+    }
+
     const produto = {
-      codigo: this.novoCodigo,
-      descricao: this.novaDescricao,
+      codigo: codigoLimpo.toUpperCase(),
+      descricao: descricaoLimpa,
       saldo: this.novoSaldo
     }
-    this.estoqueService.salvarProdutos(produto).subscribe(() => {
-      this.carregarProdutos();
-      this.novoCodigo = '';
-      this.novaDescricao = '';
-      this.novoSaldo = 0;
-    })
+
+    this.estoqueService.salvarProdutos(produto).subscribe({
+      next: () => {
+        this.carregarProdutos();
+        this.novoCodigo = '';
+        this.novaDescricao = '';
+        this.novoSaldo = 0;
+        this.mostrarMensagem('sucesso', 'Produto cadastrado com sucesso!');
+      },
+      error: (erro) => {
+        console.error('Erro ao salvar o produto:', erro);
+        this.mostrarMensagem('erro', 'Falha ao salvar produto no banco.');
+      }
+    });
+  }
+
+  // --- Função que exibe a notificação na tela ---
+  mostrarMensagem(tipo: 'sucesso' | 'erro', texto: string) {
+    this.tipoFeedBack = tipo;
+    this.mensagemFeedback = texto;
+    
+    // Oculta após 3 segundos
+    setTimeout(() => {
+      this.mensagemFeedback = '';
+    }, 3000); 
   }
 }

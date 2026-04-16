@@ -35,3 +35,9 @@
   </table>
 
 </div>
+<div 
+  class="toast-notificacao" 
+  *ngIf="mensagemFeedback" 
+  [ngClass]="tipoFeedBack === 'sucesso' ? 'toast-sucesso' : 'toast-erro'">
+  {{ mensagemFeedback }}
+</div>
