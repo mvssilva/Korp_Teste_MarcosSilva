@@ -246,15 +246,13 @@ func chatComGemini(c *gin.Context) {
 	// Enviando a pergunta
 	resposta, err := modelo.GenerateContent(ctx, genai.Text(promptSistema+req.Mensagem))
 
-	// 🔥 CÓDIGO DE DEBUG ADICIONADO AQUI
 	if err != nil {
 		fmt.Println("\n=== ERRO DETALHADO DA API DO GOOGLE ===")
 		fmt.Println(err)
-		fmt.Println("========================================\n")
-
 		c.JSON(http.StatusInternalServerError, gin.H{"erro": "Falha na API: " + err.Error()})
 		return
 	}
+
 	// Extraindo e limpando o texto da resposta que o Gemini devolveu
 	var textoResposta string
 	if len(resposta.Candidates) > 0 && len(resposta.Candidates[0].Content.Parts) > 0 {
