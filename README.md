@@ -41,7 +41,7 @@ Este projeto foi desenvolvido como parte do desafio técnico para a vaga de Dese
   4. KorpAssist (IA):
         - Chatbot integrado para sanar dúvidas sobre o fluxo de estoque e faturamento.
         - Engenharia de Prompt: Blindagem contra vazamento de dados técnicos (Data Leakage) e foco em regras de negócio.
-        - 
+          
 ## Como Executar o Projeto
 Pré-requisitos
 - Go 1.20+
