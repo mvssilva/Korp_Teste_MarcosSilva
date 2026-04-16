@@ -1,0 +1,84 @@
+/* Botão circular no canto inferior direito */
+.btn-flutuante {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #F01446;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Janela de conversa */
+.janela-chat {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  height: 450px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.cabecalho-chat {
+  background: #F01446;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.corpo-chat {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f8f9fa;
+}
+
+/* Balões de fala */
+.balao {
+  max-width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.user {
+  align-self: flex-end;
+  background: #F01446;
+  color: white;
+}
+
+.ia {
+  align-self: flex-start;
+  background: #e9ecef;
+  color: #333;
+}
+
+.rodape-chat {
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+  border-top: 1px solid #ddd;
+}
+
+.rodape-chat input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

@@ -1,0 +1,26 @@
+<button class="btn-flutuante" (click)="toggleChat()">
+  <span *ngIf="!chatAberto">💬</span>
+  <span *ngIf="chatAberto">✖</span>
+</button>
+
+<div class="janela-chat" *ngIf="chatAberto">
+  <div class="cabecalho-chat">
+    <strong>KorpAssist (IA)</strong>
+  </div>
+
+  <div class="corpo-chat">
+    <div *ngFor="let msg of historico" [ngClass]="['balao', msg.autor]">
+      {{ msg.texto }}
+    </div>
+    <div *ngIf="isDigitando" class="balao ia">Digitando...</div>
+  </div>
+
+  <div class="rodape-chat">
+    <input 
+      type="text" 
+      [(ngModel)]="mensagemUsuario" 
+      (keyup.enter)="enviarMensagem()" 
+      placeholder="Pergunte algo...">
+    <button (click)="enviarMensagem()">></button>
+  </div>
+</div>
