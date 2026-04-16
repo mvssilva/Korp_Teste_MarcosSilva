@@ -77,8 +77,4 @@ Passo a Passo
 ## Tratamento de Falhas
 Implementado feedback visual (Toast Notifications) para alertar o usuário caso um dos microsserviços esteja offline ou ocorra um erro de processamento, garantindo a recuperação e transparência do sistema.
 
-## Fotos do estágio atual:
-<img width="973" height="768" alt="image" src="https://github.com/user-attachments/assets/4db24deb-1b7b-417c-b53b-3328bcaf334f" />
-<img width="973" height="768" alt="image" src="https://github.com/user-attachments/assets/61f18d06-bfac-4f04-8c1b-939993731622" />
-
 Desenvolvido por Marcos Silva, Obrigado!
